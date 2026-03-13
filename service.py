@@ -81,7 +81,7 @@ def update_service(id):
     services.subtitle = data["subtitle"]
     services.description = data["description"]
     services.price = data["price"]
-    services.imgurl = data["imgurl"]
+    services.imageurl = data["imageurl"]
     services.status = data["status"]
     services.categoryid = data["categoryid"]
     db.session.commit()
