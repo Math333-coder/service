@@ -14,7 +14,6 @@ class Service(db.Model):
     price=db.Column(db.Integer)
     imageurl=db.Column(db.String(30))
     status=db.Column(db.String(20))
-    deletestatus=db.Column(db.String(10))
     categoryid=db.Column(db.Integer)
     created_at=db.Column(db.DateTime,default=datetime.now)
     updated_at=db.Column(db.DateTime,default=datetime.now,onupdate = datetime.now)
@@ -28,8 +27,7 @@ class Service(db.Model):
                  "description":self.description,
                  "price":self.price,
                  "imageurl":self.imageurl,
-                 "status":self.status,
-                 "deletestatus":self.deletestatus,
+                 "status":self.status
                  "categoryid":self.categoryid
                  }
     
@@ -55,7 +53,6 @@ def Createservice():
                             price = payload["price"],
                             imageurl = payload["imageurl"],
                             status = payload["status"],
-                            deletestatus = payload["deletestatus"],
                             categoryid = payload["categoryid"]
                           )           
     
@@ -86,7 +83,6 @@ def update_service(id):
     services.price = data["price"]
     services.imgurl = data["imgurl"]
     services.status = data["status"]
-    services.deletestatus = data["deletestatus"]
     services.categoryid = data["categoryid"]
     db.session.commit()
     return jsonify({"message":"service updated"})
