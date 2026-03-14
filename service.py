@@ -69,7 +69,7 @@ def service_category(categoryid):
 @app.route('/services_id/<int:id>' ,methods=["GET"])
 def service_id(id):
     services = Service.query.filter_by(id=id).first()
-    return jsonify([s.to_dict() for s in services])
+    return jsonify(services.to_dict())
 
 @app.route("/update_service/<int:id>",methods = ["put"])
 def update_service(id):
